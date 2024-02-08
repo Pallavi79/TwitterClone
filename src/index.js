@@ -17,28 +17,7 @@ app.listen(3000, async()=>{
     // tweet.save();
 
     const tweetRepo = new TweetRepository();
-    // const tweet = await tweetRepo.get('65c1f4218201051b9ef9c901')
-    // const tweet = await tweetRepo.update('65c1f4218201051b9ef9c901',{content:'latest content'})
-
-    //const tweet = await tweetRepo.create({content:'Pagination tweet'});
-    // console.log(tweet);
-    // tweet.comments.push({content:'first comment'});
-    // await tweet.save();
-    // console.log(tweet);
-
-    // const tweet = await tweetRepo.create({content:'Tweet with comment schema'});
-
-    // const comment = await Comment.create({content:'new comment'});
-    // console.log(tweet);
-    // tweet.comments.push(comment);
-    // await tweet.save();
-    // console.log(tweet);
-
-    //const tweet = await tweetRepo.get('65c231f626f07a965111432f');
-
-    const tweet = await tweetRepo.getAll(0,4);
-    //virtuals
-    console.log(tweet[0].contentWithEmail);
+    await tweetRepo.create({content:'With hooks now',userEmail:'hooksnow@gmail.com'});
 
     //console.log(tweet);
 })
