@@ -5,28 +5,13 @@ const tweetSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    userEmail:{
-        type:String
-    },
-    comments:[
+    hashtags:[
         {
             type:mongoose.Schema.Types.ObjectId,
-            ref:'Comment'
+            ref:'Hashtag'
         }
     ]
-},{
-    timestamps:true
-});
-
-tweetSchema.virtual('contentWithEmail').get(function process(){
-    return `${this.content} \nCreated By: ${this.userEmail}`
-});
-
-tweetSchema.pre('save',function(next){
-    console.log('Inside a hook');
-    this.content = this.content+'....'
-    next();
-})
+},{timestamps:true});
 
 const Tweet = mongoose.model('Tweet',tweetSchema);
 module.exports=Tweet;
