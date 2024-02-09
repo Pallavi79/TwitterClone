@@ -15,12 +15,12 @@ app.listen(3000, async()=>{
     console.log('listening on port 3000');
     await connect();
     
-    const userRepo = new UserRepository();
-    const tweetRepo = new TweetRepository();
-    const tweets = await  tweetRepo.getAll(0,10);
-    const users = await userRepo.getAll(0,10)
+    // const userRepo = new UserRepository();
+    // const tweetRepo = new TweetRepository();
+    // const tweets = await  tweetRepo.getAll(0,10);
+    // const users = await userRepo.getAll(0,10)
 
-    const likeService = new LikeService();
-    await likeService.toggleLike(tweets[0].id,'Tweet',users[0].id);
+    // const likeService = new LikeService();
+    // await likeService.toggleLike(tweets[0].id,'Tweet',users[0].id);
 
 })
