@@ -16,6 +16,11 @@ app.listen(3000, async()=>{
     await connect();
     
     // const userRepo = new UserRepository();
+    // userRepo.create({
+    //     email:'abc@gmail.com',
+    //     password:'12345',
+    //     name:'abc'
+    // })
     // const tweetRepo = new TweetRepository();
     // const tweets = await  tweetRepo.getAll(0,10);
     // const users = await userRepo.getAll(0,10)
