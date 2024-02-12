@@ -23,5 +23,28 @@ const signup = async(req,res)=>{
         });
     }
 }
+const login = async (req, res) => {
+    // console.log('inside login')
+    try {
+        const token = await userService.signin(req.body);
+        return res.status(200).json({
+            success: true,
+            message: 'Successfully logged in',
+            data: token,
+            err: {}
+        })
+    } catch(error) {
+        return res.status(500).json({
+            message: 'Something went wrong',
+            data: {},
+            success: false,
+            err: error
+        });
+    }
+        
+};
 
-module.exports = signup
+module.exports = {
+    signup,
+    login
+}
