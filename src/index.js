@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const connect = require('./config/database');
@@ -15,8 +17,8 @@ passportAuth(passport);
 const apiRoutes = require('./routes/index');
 app.use('/api',apiRoutes);
 
-
-app.listen(3000, async()=>{
+const port = process.env.PORT;
+app.listen(port, async()=>{
     console.log('listening on port 3000');
     await connect();
 
