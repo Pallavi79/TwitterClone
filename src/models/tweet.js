@@ -6,6 +6,9 @@ const tweetSchema = new mongoose.Schema({
         required:true,
         max:[250,'Tweet can not be more than 250 characters']
     },
+    imageUrl:{
+        type:String
+    },
     likes:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Like'

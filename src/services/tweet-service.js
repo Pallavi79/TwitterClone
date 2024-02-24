@@ -6,12 +6,13 @@ class TweetService{
         this.hashtagRepository = new HashtagRepository();
     }
 
-    async create(data){
-        const content = data.content;
+    async create(file,data){
+        const content = data;
         //regex to extract hashtags
         const tags = content.match(/#[a-zA-Z0-9_]+/g)
         .map((tag)=>tag.substring(1).toLowerCase());
-        const tweet = await this.tweetRepository.create(data);
+
+        const tweet = await this.tweetRepository.create(file,data);
 
         let alreadyPresentTags = await this.hashtagRepository.findByName(tags);
 

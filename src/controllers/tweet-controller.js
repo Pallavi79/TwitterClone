@@ -3,7 +3,20 @@ const TweetService = require('../services/tweet-service');
 const tweetService = new TweetService();
 const createTweet = async(req,res)=>{
     try {
-        const response = await tweetService.create(req.body);
+        let response=null;
+        if(req.file){
+            response = await tweetService.create(req.file,req.body.content);
+        }
+        else if(req.body.content){
+            response = await tweetService.create(null,req.body.content);
+        }else{
+            return res.status(400).json({
+                success: false,
+                message: 'Please provide either an image or content for the tweet',
+                data: {},
+                err: {}
+            });
+        }
         return res.status(201).json({
             success:true,
             message:'Successfully created a new Tweet',

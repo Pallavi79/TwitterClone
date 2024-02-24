@@ -19,7 +19,6 @@ app.use('/api',apiRoutes);
 
 const port = process.env.PORT;
 app.listen(port, async()=>{
-    console.log('listening on port 3000');
+    console.log(`listening on port ${port}`);
     await connect();
-
 })

@@ -1,13 +1,22 @@
 const Tweet = require('../models/tweet')
 const CrudRepository = require('./crud-repository');
+const cloudinary = require('../config/cloudinary-config');
 class TweetRepository extends CrudRepository{
     constructor(){
         super(Tweet);
     }
-    async create(data){
+    async create(file,data){
 
         try {
-            const tweet = await Tweet.create(data);
+            let tweet = null;
+            if(!file){
+                tweet = await Tweet.create({content:data});
+            }
+            else{
+                const result = await cloudinary.uploader.upload(file.path);
+                const image = result.secure_url;
+                tweet = await Tweet.create({content:data,imageUrl:image});
+            }
             return tweet;
         } catch (error) {
             console.log(error);
